@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      href="https://fonts.cdnfonts.com/css/memphis-river"
+      rel="stylesheet"
+    />
+    <!-- <script
+      disable-devtool-auto
+      src="https://cdn.jsdelivr.net/npm/disable-devtool"
+      disable-menu="true"
+      disable-select="false"
+      disable-copy="false"
+      disable-cut="false"
+      disable-paste="false"
+    ></script> -->
+  </head>
+  <body>
+    <div class="reg-container">
+      <!-- -------------------- Animation of Background ----------- -->
+      <div class="animate"></div>
+      <div class="animate"></div>
+      <div class="animate"></div>
+      <div class="animate"></div>
+      <div class="animate"></div>
+      <div class="animate"></div>
+      <div class="animate"></div>
+      <div class="animate"></div>
+      <!------------------------------ Login---------------------- -->
+      <div class="login" style="display: none">
+        <h1>Login Page</h1>
+
+        <form>
+          <label for="firstName">First Name:</label>
+          <input
+            type="text"
+            id="Fname"
+            name="firstName"
+            placeholder="Enter your first name"
+            required
+          />
+
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="mail"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+
+          <input
+            type="submit"
+            value="Login"
+            onclick="checkCredentials(event)"
+          />
+        </form>
+        <button id="backButton" onclick="backNevigation()">Back</button>
+      </div>
+      <!------------------------------------ Game Menu--------------------- -->
+      <div class="menu">
+        <h1>Game Menu</h1>
+        <div class="buttons">
+          <button id="menu-button" class="play">Play</button>
+          <button id="menu-button" class="register-btn">Sign Up</button>
+          <button id="menu-button" class="all-players-btn">
+            Show All Players
+          </button>
+          <button id="menu-button" class="all-results-btn">
+            Show All Results
+          </button>
+
+          <button onclick="showfreq()" id="menu-button" class="frequency-btn">
+            Show Chart
+          </button>
+
+          <div class="switch-wrapper">
+            <label class="toggle">
+              <input id="switch" type="checkbox" />
+              <span class="slider"></span>
+              <span class="labels" data-on="ON" data-off="OFF"></span>
+            </label>
+            <div id="important">
+              <img
+                src="./images/icons8-high-importance-48.png"
+                width="32px"
+                alt="Important"
+                title="Use fake data for testing"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!----------------------------- Register Form---------------------- -->
+      <div class="wrapper-form">
+        <h3 class="reg-header">Player Information Form</h3>
+        <form id="playerForm">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            required
+            minlength="4"
+            placeholder="Enter FirstName"
+          /><br />
+
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            required
+            minlength="4"
+            placeholder="Enter LastName"
+          /><br />
+
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob" required /><br />
+
+          <label for="age">Age</label>
+          <output id="age"></output><br />
+
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option></select
+          ><br />
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            pattern="[a-z0-9._%+-]+@gmail\.com$"
+            placeholder="Enter Email"
+          /><br />
+
+          <button id="reg-button" type="submit">Register</button>
+        </form>
+        <button id="backButton" onclick="backNevigation()">Back</button>
+      </div>
+      <!-- ----------------------------Choose game Difficulty----------------------- -->
+      <div class="radio-container">
+        <h2 class="radio-header">Choose Word Scrumble Difficulty</h2>
+        <div class="radio-box">
+          <input
+            type="radio"
+            name="difficulty"
+            id="easy"
+            value="easy"
+            checked
+          />
+          <label for="easy"
+            ><h2>Easy</h2>
+            <p>
+              Easy mode for the Word Scramble game would consist of words with
+              4-6 characters.
+            </p>
+          </label>
+
+          <input type="radio" name="difficulty" id="medium" value="medium" />
+          <label for="medium">
+            <h2>Medium</h2>
+            <p>
+              Medium mode for the Word Scramble game would consist of words with
+              7-10 characters. These words would be even more complex and
+              obscure,
+            </p>
+          </label>
+
+          <input type="radio" name="difficulty" id="hard" value="hard" />
+          <label for="hard"
+            ><h2>Hard</h2>
+            <p>
+              Hard mode for the Word Scramble game would consist of words with
+              11-15 characters.
+            </p>
+          </label>
+        </div>
+        <div class="button-container">
+          <button id="start">Start</button>
+        </div>
+      </div>
+      <!---------------------------------- Play Game------------------- -->
+      <div class="playGame">
+        <h2>Word Scramble Game</h2>
+        <div class="playerData">
+          <p><b>Name:</b> <span id="name"></span></p>
+          <p><b>Scrore:</b> <span id="score"></span></p>
+          <p><b>Difficulty:</b><span id="difficulty"></span></p>
+        </div>
+        <div class="word">GMAE</div>
+        <div class="clue">Hint: <span class="hit"></span></div>
+        <input oninput="removeStatus()" id="userAnswer" type="text" />
+        <p id="status">Status: <span id="status-answer"></span></p>
+        <div class="button-container">
+          <button id="accept">Accept</button>
+          <button id="next">Next</button>
+          <button id="endGame">End Game</button>
+        </div>
+      </div>
+      <!----------------------------Show Percentage  -->
+      <div class="showpercentage">
+        <h1>Show Percentage</h1>
+        <div class="img-container"><img id="img" src="" alt="img" /></div>
+        <div class="showpercentage-container"></div>
+        <button id="backShowPlayers" onclick="backNevigation()">Back</button>
+      </div>
+
+      <!-------------------Show all Players ------------------------->
+      <div class="showallplayers">
+        <h1>All Player</h1>
+        <div class="showPlayers-conatiner"></div>
+        <button id="backShowPlayers" onclick="backNevigation()">Back</button>
+      </div>
+      <!----------------------------- Show All Player Results ------------------------>
+      <div class="results">
+        <h1>Show All Player Results</h1>
+        <div class="playerResult-conatiner"></div>
+        <button id="back" onclick="backNevigation()">Back</button>
+      </div>
+      <!--------------- Gender and Percentage Chart -------------  -->
+      <div class="chart-container" style="display: none">
+        <div class="chart-container-wrapper">
+          <h1>Word Scramble Statistics</h1>
+          <canvas id="myChart" width="30" height="30"></canvas>
+          <div class="button-wrapper">
+            <button id="gender-btn">Gender</button>
+            <button id="percentage-btn">Percentage</button>
+          </div>
+          <button id="backButton" onclick="backNevigation()">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <script defer src="./word/easy.js"></script>
+    <script defer src="./word/hard.js"></script>
+    <script defer src="./word/medium.js"></script>
+    <script src="./dumpyData.js"></script>
+    <script defer src="./index.js"></script>
+  </body>
+</html>

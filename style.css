@@ -1,0 +1,783 @@
+* {
+  /* outline: 1px solid; */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@import url("https://fonts.cdnfonts.com/css/memphis-river");
+body {
+  background-image: linear-gradient(to right, #00b4db, #0083b0);
+}
+
+/*--------------- Game Menu---------------- */
+.animate {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: 6px solid rgb(1, 234, 255);
+}
+.animate:nth-child(1) {
+  top: 12%;
+  left: 50%;
+  animation: animate 5s linear infinite;
+}
+.animate:nth-child(2) {
+  top: 20%;
+  left: 10%;
+  animation: animate 6s linear infinite;
+}
+.animate:nth-child(3) {
+  top: 50%;
+  left: 10%;
+  animation: animate 4s linear infinite;
+}
+.animate:nth-child(4) {
+  top: 40%;
+  left: 30%;
+  animation: animate 4s linear infinite;
+}
+.animate:nth-child(5) {
+  top: 90%;
+  left: 40%;
+  animation: animate 3s linear infinite;
+}
+.animate:nth-child(6) {
+  top: 10%;
+  left: 90%;
+  animation: animate 3.5s linear infinite;
+}
+.animate:nth-child(7) {
+  top: 80%;
+  left: 80%;
+  animation: animate 8s linear infinite;
+}
+.animate:nth-child(7) {
+  top: 80%;
+  left: 70%;
+  animation: animate 7s linear infinite;
+}
+.animate:nth-child(8) {
+  top: 60%;
+  left: 90%;
+  animation: animate 3s linear infinite;
+}
+.animate:nth-child(9) {
+  top: 50%;
+  left: 30%;
+  animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: scale(0) translate(0) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3) translate(-80px) rotate(360deg);
+    opacity: 0;
+  }
+}
+.menu {
+  width: 450px;
+  text-align: center;
+  background-color: #f5f5f5;
+  padding: 40px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+button {
+  background-color: darkslategray;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+#menu-button:hover {
+  background-image: linear-gradient(to right, #00b4db, #0083b0);
+  color: black;
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.reg-container {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 100vh;
+}
+
+.wrapper-form {
+  width: 400px;
+  display: none;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.reg-container .reg-header {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: x-large;
+}
+
+/* -------------------Switch button----------------- */
+.switch-wrapper {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.switch-wrapper:hover::after {
+  position: absolute;
+  content: "Use fake data for testing";
+  top: -50%;
+  background-color: #333;
+  color: white;
+  opacity: 0.7;
+}
+.toggle {
+  --width: 80px;
+  --height: calc(var(--width) / 3);
+
+  position: relative;
+  display: inline-block;
+  width: var(--width);
+  height: var(--height);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+  border-radius: var(--height);
+  cursor: pointer;
+}
+
+.toggle input {
+  display: none;
+}
+
+.toggle .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--height);
+  background-color: #ccc;
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle .slider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--height));
+  height: calc(var(--height));
+  border-radius: calc(var(--height) / 2);
+  background-color: #fff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle input:checked + .slider {
+  background-color: #2196f3;
+}
+
+.toggle input:checked + .slider::before {
+  transform: translateX(calc(var(--width) - var(--height)));
+}
+
+.toggle .labels {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  font-family: sans-serif;
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle .labels::after {
+  content: attr(data-off);
+  position: absolute;
+  right: 5px;
+  color: #4d4d4d;
+  opacity: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle .labels::before {
+  content: attr(data-on);
+  position: absolute;
+  left: 5px;
+  color: #ffffff;
+  opacity: 0;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle input:checked ~ .labels::after {
+  opacity: 0;
+}
+
+.toggle input:checked ~ .labels::before {
+  opacity: 1;
+}
+
+/* -------------------Switch button */
+#playerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px;
+}
+
+.showTextArea {
+  display: block;
+}
+
+#reg-button {
+  background-color: red;
+  color: white;
+  font-size: large;
+  font-weight: 800;
+  border: none;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+}
+#backButton {
+  background-color: darkgreen;
+  color: white;
+  font-size: large;
+  font-weight: 800;
+  border: none;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+  width: 100%;
+  margin-top: 1%;
+}
+
+#backButton:hover {
+  background-color: blue;
+  border-color: darkblue;
+  cursor: pointer;
+}
+
+/* ----------------------------Game Mode----------------- */
+h2 {
+  text-align: center;
+}
+.radio-header {
+  color: white;
+  background-color: darkblue;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+}
+.radio-container {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 80%;
+  background-color: white;
+  margin-bottom: 5%;
+}
+.radio-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.radio-box input[type="radio"] {
+  display: none;
+}
+
+.radio-box label {
+  display: block;
+  padding: 5px 10px;
+  background-color: lightskyblue;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 250px;
+  width: 100%;
+}
+.radio-box label p {
+  margin-top: 50px;
+}
+.radio-box input[type="radio"]:checked + label {
+  background-color: lightgreen;
+  color: black;
+}
+
+/* -------------------Buttons----------------- */
+.button-container button {
+  color: white;
+  font-size: large;
+  font-weight: 800;
+  border: none;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+  width: 100px;
+  cursor: pointer;
+}
+#accept {
+  background-color: green;
+}
+#next {
+  background-color: red;
+}
+#start {
+  background-color: green;
+}
+#newgame {
+  background-color: blue;
+}
+#back {
+  background-color: black;
+  color: white;
+}
+
+/* --------------------Word Scramble Game  */
+.hit {
+  min-width: 50%;
+  max-width: 90%;
+}
+.clue {
+  height: 50px;
+}
+.playerData {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: larger;
+}
+.playGame {
+  display: none;
+  flex-direction: column;
+  gap: 40px;
+  width: 600px;
+  background-color: white;
+  border-radius: 20px;
+  margin: 50px 20px;
+  padding: 20px;
+}
+.playGame h2,
+.menu h1 {
+  background-image: linear-gradient(
+    to top right,
+    #333333,
+    #00b4db,
+    black,
+    black
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: "Memphis River", sans-serif;
+  font-size: 50px;
+  letter-spacing: 5px;
+}
+
+.word {
+  text-align: center;
+  font-size: xx-large;
+  font-family: monospace;
+  letter-spacing: 1em;
+}
+
+.playGame .button-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.playGame input {
+  align-self: center;
+  border: none;
+  border: solid 1px;
+  border-radius: 50px;
+  height: 40px;
+  width: 60%;
+  text-align: center;
+  font-size: larger;
+}
+
+.wrongAnswer {
+  animation: wrong 0.3s 2;
+}
+
+@keyframes wrong {
+  25% {
+    translate: 6px 0;
+    border: 2px solid #e70707;
+  }
+  50% {
+    translate: -6px 0;
+    border: 2px solid #e70707;
+  }
+  100% {
+    translate: 6px 0;
+    border: 2px solid #e70707;
+  }
+}
+
+.playGame #status {
+  font-size: larger;
+}
+
+/* Result TextArea */
+
+#back,
+#backShowPlayers {
+  color: white;
+  font-size: large;
+  font-weight: 800;
+  border: none;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+  width: 100px;
+  cursor: pointer;
+}
+
+.results {
+  width: 50%;
+  height: 620px;
+
+  background-color: white;
+  display: none;
+  flex-direction: column;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#img {
+  height: 90px;
+}
+.showallplayers,
+.showpercentage {
+  width: 60%;
+  height: 620px;
+  background-color: white;
+  display: none;
+  flex-direction: column;
+
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+#back,
+#backShowPlayers {
+  background-color: black;
+  color: white;
+  margin-top: auto;
+  align-self: center;
+}
+.results h1,
+.showallplayers h1,
+.showpercentage h1 {
+  text-align: center;
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  width: 100%;
+}
+.playerResult-conatiner,
+.showPlayers-conatiner,
+.showpercentage-container {
+  margin-top: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  overflow-y: auto;
+}
+.playResults {
+  width: 50%;
+  height: max-content;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: lightslategray;
+  border: solid 1px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"] {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 20px;
+  background-color: #f7f7f7;
+  padding: 5px 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus {
+  outline: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+}
+
+select {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+select:focus {
+  outline: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.playerName {
+  text-align: center;
+  width: 50%;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: lightslategray;
+  border: 1px solid;
+  font-size: xx-large;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+/*-------------------------Login------------------------------ */
+.login h1 {
+  color: #333333;
+  text-align: center;
+  /* margin-top: 40px; */
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 400px;
+
+  margin-top: 40px;
+}
+
+.login label {
+  display: block;
+  margin-top: 10px;
+  color: #333333;
+}
+
+.login input[type="text"],
+input[type="email"],
+input[type="submit"] {
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f5f5f5;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: #333333;
+  font-size: 16px;
+}
+
+.login input[type="submit"] {
+  background-color: red;
+  color: white;
+  font-size: large;
+  font-weight: 800;
+  border: none;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+  width: 100%;
+  margin-top: 1%;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* ---------------show Chart-------------- */
+
+.chart-container h1 {
+  text-align: center;
+  background-image: linear-gradient(to top, black, darkblue, black);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: "Memphis River", sans-serif;
+  margin-top: 4%;
+}
+
+.chart-container-wrapper {
+  background-color: #ffffff;
+  padding: 10px;
+  min-width: 500px;
+  min-height: auto;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.chart-container button {
+  padding: 15px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  background-color: cornflowerblue;
+  font-weight: 600;
+  cursor: pointer;
+}
+@media screen and (min-width: 1200px) {
+  .container-wrapper {
+    gap: 10px;
+    min-width: 300px;
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .reg-container .wrapper-form {
+    width: 90%;
+    padding: 5px;
+  }
+  .game-mode {
+    width: 90%;
+    padding: 5px;
+  }
+  .results,
+  .showallplayers,
+  .showpercentage {
+    width: 90%;
+  }
+  .playResults {
+    width: 80%;
+  }
+  .playGame {
+    width: 90%;
+  }
+  .login {
+    width: 80%;
+  }
+  .word {
+    font-size: x-large;
+  }
+
+  .radio-box {
+    flex-direction: column;
+  }
+  .radio-box label {
+    height: auto;
+  }
+  .radio-box label p {
+    margin: 15px auto;
+  }
+  .chart-container-wrapper {
+    min-width: 80vw;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .word {
+    font-size: x-large;
+    letter-spacing: 12px;
+  }
+  .button-container button {
+    width: 100%;
+    font-size: large;
+    font-weight: 200;
+  }
+  .playGame h2 {
+    font-family: "Memphis River", sans-serif;
+    font-size: 30px;
+  }
+  .menu {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 290px) {
+  .playGame {
+    width: 95%;
+  }
+  .button-container button {
+    width: 100%;
+    font-size: medium;
+    font-weight: 150;
+  }
+  .chart-container-wrapper {
+    min-width: 95vw;
+  }
+}
