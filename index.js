@@ -84,7 +84,7 @@ function getRandomInt(n) {
 // Task 5: (4 marks)
 function playGame() {
   let displayWord = document.querySelector(".word");
-  let hit = document.querySelector(".hit");
+  let hint = document.querySelector(".hit");
   const playerName = document.querySelector("#name");
   const playerScore = document.querySelector("#score");
   const playerDifficulty = document.querySelector("#difficulty");
@@ -112,15 +112,10 @@ function playGame() {
   let selectedDifficulty = difficulty();
   playerDifficulty.innerHTML = " " + radioValue;
 
-  PlayerData.find((player) => {
-    if (currentLoginPlayer.firstName === player.firstName) {
-      player.difficulty = radioValue;
-    }
-  });
-
   // Get a random index to select a word from the selectedDifficulty array
   let random = getRandomInt(selectedDifficulty.length);
-  hit.innerHTML = selectedDifficulty[random].clue;
+  hint.innerHTML = selectedDifficulty[random].clue;
+
   // Set the answer to the selected word
   answer = selectedDifficulty[random].word;
 
@@ -144,7 +139,7 @@ function playGame() {
   console.log(answer);
 }
 
-function nextQuestion() {
+function nextWord() {
   // Skip question and add to the plyaer total amount thet were ask.
   PlayerData.find((player) => {
     let status = document.getElementById("status-answer");
@@ -160,7 +155,7 @@ function nextQuestion() {
 start.addEventListener("click", playGame);
 
 // Task 8: (2 marks)
-next.addEventListener("click", nextQuestion);
+next.addEventListener("click", nextWord);
 next.addEventListener("click", findPercentageScore);
 
 // Task 9 (6 marks) and Task 11: (4 marks)
@@ -376,13 +371,27 @@ function showfreq() {
     "rgba(153, 102, 255, 0.8)", // Purple
     "rgba(54, 162, 235, 0.8)", // Blue
     "rgba(75, 192, 192, 0.8)", // Green
-    "	rgb(0,128,0)",
+    "rgb(0,128,0)",
   ];
+
+  const colorLabels = {
+    "rgb(255,0,0)": "Fail",
+    "rgba(255, 159, 64, 0.8)": "Good",
+    "rgba(255, 206, 86, 0.8)": "Good",
+    "rgba(153, 102, 255, 0.8)": "Good",
+    "rgba(54, 162, 235, 0.8)": "Good",
+    "rgba(75, 192, 192, 0.8)": "Perfect",
+    "rgb(0,128,0)": "Perfect",
+  };
+
+  const getColorLabel = (color) => {
+    return colorLabels[color] || "N/A";
+  };
   var percentageGraph = {
-    labels: ["<50", "50-59", "60-69", "70-79", "80-89", "90-99", "100"],
+    labels: ["Fail (<50%)", "50-59", "60-69", "70-79", "80-89", "90-99", "100"],
     datasets: [
       {
-        label: "Percentage Failed",
+        label: "Percentage Distribution",
         data: [
           persons?.filter((person) => person?.percentage < 50).length,
           persons?.filter(
@@ -408,28 +417,53 @@ function showfreq() {
       },
     ],
   };
-
+  let delayed;
   const percentageOptions = {
+    plugins: {
+      legend: {
+        labels: {
+          generateLabels: function (chart) {
+            const defaultLabels =
+              Chart.defaults.plugins.legend.labels.generateLabels(chart);
+            defaultLabels[0].text = getColorLabel(defaultLabels[0].fillStyle);
+            return defaultLabels;
+          },
+        },
+      },
+    },
+
     title: {
       display: true,
       text: "Pecentage Frequency Chart",
     },
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-            stepSize: 1,
-            precision: 0,
+    animation: {
+      onComplete: () => {
+        delayed = true;
+      },
+      delay: (context) => {
+        let delay = 5;
+        if (context.type === "data" && context.mode === "default" && !delayed) {
+          delay = context.dataIndex * 300 + context.datasetIndex * 100;
+        }
+        return delay;
+      },
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+              stepSize: 1,
+              precision: 0,
+            },
           },
+        ],
+      },
+      legend: {
+        position: "top",
+        labels: {
+          fontColor: "#333",
+          fontSize: 30,
         },
-      ],
-    },
-    legend: {
-      position: "top",
-      labels: {
-        fontColor: "#333",
-        fontSize: 16,
       },
     },
   };
@@ -496,12 +530,12 @@ function showfreq() {
     myChart = new Chart(ctx, {
       type: "doughnut",
       data: {
-        labels: ["Male", "Female"],
+        labels: ["Male", "Female", "Other"],
         datasets: [
           {
             label: "Gender",
-            data: [maleCount, femaleCount],
-            backgroundColor: ["red", "#36a2eb"],
+            data: [maleCount, femaleCount, otherCount],
+            backgroundColor: ["red", "#36a2eb", "pink"],
           },
         ],
       },

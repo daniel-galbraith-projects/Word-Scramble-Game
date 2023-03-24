@@ -1,19 +1,11 @@
 const easyWord = [
-  { word: "clasp", clue: "A device for holding things together" },
-  { word: "dwarf", clue: "A person of unusually small stature" },
   { word: "eager", clue: "Having or showing keen interest or enthusiasm" },
-  {
-    word: "fable",
-    clue: "A short story, typically with animals as characters, conveying a moral",
-  },
+
   {
     word: "grape",
     clue: "A fruit, or the vine bearing it, that grows in clusters",
   },
-  {
-    word: "hinge",
-    clue: "A movable joint or mechanism on which a door, gate, or lid swings as it opens and closes",
-  },
+
   {
     word: "icicle",
     clue: "A long, pointed, tapering piece of ice formed by the freezing of dripping water",
@@ -26,11 +18,6 @@ const easyWord = [
     clue: "A short statement or slogan expressing the guiding principle of a person, group, or organization",
   },
   {
-    word: "nymph",
-    clue: "A mythological spirit of nature imagined as a beautiful maiden inhabiting rivers, woods, or other locations",
-  },
-  { word: "oasis", clue: "A fertile spot in a desert where water is found" },
-  {
     word: "piano",
     clue: "A large keyboard musical instrument with a wooden case enclosing a soundboard and metal strings",
   },
@@ -42,27 +29,13 @@ const easyWord = [
     word: "risky",
     clue: "Full of the possibility of danger, failure, or loss",
   },
-  {
-    word: "sable",
-    clue: "A type of marten valued for its fur, or the fur itself",
-  },
-  {
-    word: "tulip",
-    clue: "A bulbous spring-flowering plant of the lily family, with boldly colored cup-shaped flowers",
-  },
-  {
-    word: "udder",
-    clue: "The mammary gland of a cow or other mammal, typically hanging down between the hind legs and serving as the source of milk",
-  },
+
   {
     word: "vapor",
     clue: "A substance diffused or suspended in the air, especially one normally liquid or solid",
   },
   { word: "wreck", clue: "The destruction of a ship at sea" },
-  {
-    word: "xenon",
-    clue: "A chemical element of the noble gas group, used in some kinds of electric lights",
-  },
+  ,
   { word: "yield", clue: "To give way to arguments, demands, or pressure" },
   {
     word: "zebra",
@@ -82,7 +55,7 @@ const easyWord = [
     word: "flute",
     clue: "A musical instrument with a tube of narrow cylindrical bore and a series of fingerholes or keys",
   },
-  { word: "glaze", clue: "To coat with a thin layer of a glossy substance" },
+
   { word: "haste", clue: "Excessive speed or urgency of movement or action" },
   {
     word: "index",
@@ -113,10 +86,7 @@ const easyWord = [
     clue: "The path described by a celestial body in its revolution around another",
   },
   { word: "punch", clue: "To strike with the fist" },
-  {
-    word: "quake",
-    clue: "To shake or tremble, especially as a result of a shock or an earthquake",
-  },
+  ,
   {
     word: "rebel",
     clue: "A person who rises in opposition or armed resistance against an established government or ruler",
@@ -131,23 +101,9 @@ const easyWord = [
   },
   { word: "unzip", clue: "To open or undo the fastening of a zipper" },
   { word: "vocal", clue: "Of or relating to the voice or speaking" },
-  { word: "whisk", clue: "To move quickly or nimbly" },
-  {
-    word: "xerox",
-    clue: "To make a copy of a document using a photocopying machine",
-  },
-  { word: "yield", clue: "To give way to arguments, demands, or pressure" },
-  {
-    word: "zealot",
-    clue: "A person who is fanatical and uncompromising in pursuit of their religious, political, or other ideals",
-  },
-  { word: "acorn", clue: "The nut of an oak tree" },
+
   { word: "bloom", clue: "To produce flowers; a period of flowering" },
-  { word: "chirp", clue: "To make a high-pitched, sharp sound, like a bird" },
-  {
-    word: "dwarf",
-    clue: "A person or creature much smaller than average; to make something appear smaller",
-  },
+  ,
   {
     word: "echo",
     clue: "A sound that is reflected off a surface and heard again; to repeat or imitate someone else's words",
@@ -160,49 +116,29 @@ const easyWord = [
     word: "gloom",
     clue: "Partial or total darkness; a state of melancholy or depression",
   },
-  { word: "hatch", clue: "To emerge from an egg; to devise a plan" },
+
   {
     word: "image",
     clue: "A representation of a person or thing, especially in art or photography; an idea or concept",
   },
   { word: "jolly", clue: "Merry; cheerful; lively" },
-  {
-    word: "knead",
-    clue: "To work dough or clay by pressing and folding it; to massage or rub",
-  },
-  {
-    word: "lodge",
-    clue: "A small house or cottage; to stay temporarily in a place",
-  },
+
   {
     word: "moral",
     clue: "Concerned with the principles of right and wrong behavior; a lesson taught by a story or experience",
   },
-  {
-    word: "nymph",
-    clue: "A beautiful, young female spirit in Greek mythology; a type of insect",
-  },
-  {
-    word: "otter",
-    clue: "A furry, aquatic mammal that likes to play and eat shellfish",
-  },
+
   {
     word: "peach",
     clue: "A juicy, sweet fruit with a fuzzy skin; to inform on someone",
   },
-  {
-    word: "quilt",
-    clue: "A bedspread made of stitched-together pieces of fabric; to stitch or sew",
-  },
+
   { word: "rival", clue: "A competitor or opponent; to compete with someone" },
   {
     word: "silly",
     clue: "Lacking in seriousness or good sense; amusing or ridiculous",
   },
-  {
-    word: "tulip",
-    clue: "A colorful, cup-shaped flower that blooms in the spring; a type of bulb",
-  },
+
   {
     word: "union",
     clue: "A group of people or organizations joined together for a common purpose; the state of being united",
@@ -211,14 +147,7 @@ const easyWord = [
     word: "virus",
     clue: "A microscopic organism that can cause disease; a piece of malicious software that can harm computer systems",
   },
-  {
-    word: "wedge",
-    clue: "A piece of material with one thick end and one tapering end, used to tighten, secure or split something; to force something into a narrow space",
-  },
-  {
-    word: "xenon",
-    clue: "A colorless, odorless gas that is used in lighting and laser technology",
-  },
+
   {
     word: "yacht",
     clue: "A large, luxurious boat used for pleasure cruising or racing",
@@ -226,5 +155,59 @@ const easyWord = [
   {
     word: "zebra",
     clue: "A black-and-white striped African animal related to the horse",
+  },
+  {
+    word: "banana",
+    clue: "A long, curved fruit with a yellow or green skin",
+  },
+  {
+    word: "book",
+    clue: "A written or printed work consisting of pages glued or sewn together along one side and bound in covers",
+  },
+  {
+    word: "chair",
+    clue: "A piece of furniture designed for sitting on, typically with a back and four legs",
+  },
+  {
+    word: "tree",
+    clue: "A perennial plant with a single stem or trunk, supporting branches and leaves",
+  },
+
+  {
+    word: "flower",
+    clue: "The seed-bearing part of a plant, consisting of reproductive organs surrounded by petals and sepals",
+  },
+  {
+    word: "house",
+    clue: "A building for human habitation, especially one that is lived in by a family or small group of people",
+  },
+
+  {
+    word: "guitar",
+    clue: "A musical instrument with a flat-backed rounded body, a long fretted neck, and typically six strings",
+  },
+  {
+    word: "ocean",
+    clue: "A large body of salt water that covers most of the earth's surface",
+  },
+  {
+    word: "pizza",
+    clue: "A dish of Italian origin, consisting of a flat, round base of dough topped with tomato sauce, cheese, and various other ingredients",
+  },
+  {
+    word: "phone",
+    clue: "An electronic device used for making and receiving telephone calls",
+  },
+  {
+    word: "rain",
+    clue: "Moisture condensed from the atmosphere that falls visibly in separate drops",
+  },
+  {
+    word: "river",
+    clue: "A large natural stream of water flowing in a channel to the sea, a lake, or another such stream",
+  },
+  {
+    word: "shoe",
+    clue: "A covering for the foot, typically made of leather or rubber, with a sturdy sole and not reaching above the ankle",
   },
 ];
